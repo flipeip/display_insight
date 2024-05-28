@@ -1,4 +1,3 @@
-import 'package:display/utils.dart';
 import 'package:flutter/material.dart';
 
 class LogoPrestcontas extends StatelessWidget {
@@ -6,9 +5,11 @@ class LogoPrestcontas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      'assets/images/logo_prestcontas.png',
-      scale: sizeConstOf(context),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.24,
+      child: Image.asset(
+        'assets/images/logo_prestcontas.png',
+      ),
     );
   }
 }

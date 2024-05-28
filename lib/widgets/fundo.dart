@@ -18,7 +18,7 @@ class Fundo extends StatelessWidget {
         Ondas(
           color: corSecundaria,
           offsetPadding: sizeConstOf(context) * 90.0,
-          waveCount: (sizeConstOf(context) * 20).ceil(),
+          waveCount: (sizeConstOf(context) * 30).ceil(),
           duration: const Duration(seconds: 5),
           strokeWidth: sizeConstOf(context) * 4,
         ),

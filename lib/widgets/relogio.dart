@@ -35,12 +35,18 @@ class _RelogioState extends State<Relogio> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: sizeConstOf(context) * 20.0),
-      child: Text(
-        hora,
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: sizeConstOf(context) * 50.0,
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.12,
+        child: FittedBox(
+          fit: BoxFit.contain,
+          child: Text(
+            hora,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: sizeConstOf(context) * 70.0,
+            ),
+          ),
         ),
       ),
     );
