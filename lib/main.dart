@@ -1,4 +1,3 @@
-import 'package:display/utils.dart';
 import 'package:display/widgets/logo_prestcontas.dart';
 import 'package:display/widgets/relogio.dart';
 import 'package:flutter/material.dart';
