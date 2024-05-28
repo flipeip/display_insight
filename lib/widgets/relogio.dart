@@ -16,8 +16,10 @@ class _RelogioState extends State<Relogio> {
 
   atualizarHora() {
     final agora = DateTime.now();
+    final horaAgora = agora.hour;
+    final minutoAgora = agora.minute < 10 ? '0${agora.minute}' : agora.minute;
     setState(() {
-      hora = '${agora.hour}:${agora.minute}';
+      hora = '$horaAgora:$minutoAgora';
     });
   }
 
@@ -34,13 +36,16 @@ class _RelogioState extends State<Relogio> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: sizeConstOf(context) * 20.0),
+      padding: EdgeInsets.symmetric(
+        horizontal: sizeConstOf(context) * 60.0,
+        vertical: sizeConstOf(context) * 15,
+      ),
       child: Text(
         hora,
         style: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
-          fontSize: sizeConstOf(context) * 50.0,
+          fontSize: sizeConstOf(context) * 90.0,
         ),
       ),
     );

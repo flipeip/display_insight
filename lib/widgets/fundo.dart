@@ -17,10 +17,10 @@ class Fundo extends StatelessWidget {
       children: [
         Ondas(
           color: corSecundaria,
-          offsetPadding: sizeConstOf(context) * 90.0,
-          waveCount: (sizeConstOf(context) * 20).ceil(),
+          offsetPadding: sizeConstOf(context) * 280.0,
+          waveCount: 30,
           duration: const Duration(seconds: 5),
-          strokeWidth: sizeConstOf(context) * 4,
+          strokeWidth: sizeConstOf(context) * 10,
         ),
         Positioned(
           top: sizeConstOf(context) * -100,
@@ -34,7 +34,7 @@ class Fundo extends StatelessWidget {
                 rootBundle,
                 'assets/images/icone.svg',
               ),
-              scale: sizeConstOf(context) * 5.0,
+              scale: sizeConstOf(context) * 10.0,
             ),
           ),
         ),

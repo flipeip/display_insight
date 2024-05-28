@@ -39,17 +39,14 @@ class _MainAppState extends State<MainApp> {
         backgroundColor: corPadrao,
         body: GestureDetector(
           onDoubleTap: toggleFullscreen,
-          child: Stack(
+          child: const Stack(
             children: [
-              const Fundo(),
-              const LogoFull(),
-              const Relogio(),
+              Fundo(),
+              LogoFull(),
+              Relogio(),
               Positioned(
                 right: 0.0,
-                child: Padding(
-                  padding: EdgeInsets.all(sizeConstOf(context) * 16.0),
-                  child: const LogoPrestcontas(),
-                ),
+                child: LogoPrestcontas(),
               ),
             ],
           ),

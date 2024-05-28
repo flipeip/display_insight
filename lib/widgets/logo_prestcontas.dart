@@ -6,9 +6,18 @@ class LogoPrestcontas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      'assets/images/logo_prestcontas.png',
-      scale: sizeConstOf(context),
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: sizeConstOf(context) * 60,
+        vertical: sizeConstOf(context) * 45,
+      ),
+      child: SizedBox(
+        height: sizeConstOf(context) * 90,
+        child: Image.asset(
+          fit: BoxFit.fitHeight,
+          'assets/images/logo_prestcontas.png',
+        ),
+      ),
     );
   }
 }

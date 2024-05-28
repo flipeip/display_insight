@@ -17,7 +17,7 @@ class LogoFull extends StatelessWidget {
           rootBundle,
           'assets/images/logo.svg',
         ),
-        scale: sizeConstOf(context) * 1.6,
+        scale: sizeConstOf(context) * 3,
       ),
     );
   }
