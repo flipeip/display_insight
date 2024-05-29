@@ -15,9 +15,9 @@ class LogoFull extends StatelessWidget {
     return Center(
       child: ScalableImageWidget.fromSISource(
         currentColor: corTexto(),
-        si: ScalableImageSource.fromSvg(
+        si: ScalableImageSource.fromSI(
           rootBundle,
-          'assets/images/logo.svg',
+          'assets/vectors/logo.si',
         ),
         scale: sizeConstOf(context) * 4,
       ),

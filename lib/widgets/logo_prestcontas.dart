@@ -1,6 +1,8 @@
 import 'package:display/tema.dart';
 import 'package:display/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:jovial_svg/jovial_svg.dart';
 
 class LogoPrestcontas extends StatelessWidget {
   const LogoPrestcontas({super.key});
@@ -9,17 +11,19 @@ class LogoPrestcontas extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: sizeConstOf(context) * 60,
         vertical: sizeConstOf(context) * 45,
+        horizontal: sizeConstOf(context) * 60,
       ),
       child: SizedBox(
-        height: sizeConstOf(context) * 90,
-        child: ColorFiltered(
-          colorFilter: ColorFilter.mode(corTexto(), BlendMode.srcIn),
-          child: Image.asset(
-            fit: BoxFit.fitHeight,
-            'assets/images/logo_prestcontas.png',
+        height: sizeConstOf(context) * 85,
+        child: ScalableImageWidget.fromSISource(
+          alignment: Alignment.topRight,
+          currentColor: corTexto(),
+          si: ScalableImageSource.fromSI(
+            rootBundle,
+            'assets/vectors/logo_prestcontas.si',
           ),
+          scale: sizeConstOf(context) * 4,
         ),
       ),
     );

@@ -31,9 +31,9 @@ class Fundo extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(999.0))),
             child: ScalableImageWidget.fromSISource(
               currentColor: corSecundaria(),
-              si: ScalableImageSource.fromSvg(
+              si: ScalableImageSource.fromSI(
                 rootBundle,
-                'assets/images/icone.svg',
+                'assets/vectors/icone.si',
               ),
               scale: sizeConstOf(context) * 10.0,
             ),
