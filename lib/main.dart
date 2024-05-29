@@ -32,6 +32,12 @@ class _MainAppState extends State<MainApp> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    toggleFullscreen();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
