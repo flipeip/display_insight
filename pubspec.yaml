@@ -11,11 +11,6 @@ dependencies:
     sdk: flutter
   jovial_svg: ^1.1.21
   window_manager: ^0.3.9
-  window_size:
-    git:
-      url: https://github.com/google/flutter-desktop-embedding.git
-      path: plugins/window_size
-      ref: 4bc2c310e8acf3740ea0c2b326b3ef71280391f8
 
 dev_dependencies:
   flutter_test:

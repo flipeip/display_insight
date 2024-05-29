@@ -1,10 +1,7 @@
-import 'dart:ui';
-
 import 'package:display/widgets/logo_prestcontas.dart';
 import 'package:display/widgets/relogio.dart';
 import 'package:flutter/material.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:window_size/window_size.dart';
 
 import 'tema.dart';
 import 'widgets/fundo.dart';
