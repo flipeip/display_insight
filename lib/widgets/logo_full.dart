@@ -1,5 +1,6 @@
+import 'package:display/tema.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:jovial_svg/jovial_svg.dart';
 
 import '../utils.dart';
@@ -13,6 +14,7 @@ class LogoFull extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: ScalableImageWidget.fromSISource(
+        currentColor: corTexto(),
         si: ScalableImageSource.fromSvg(
           rootBundle,
           'assets/images/logo.svg',

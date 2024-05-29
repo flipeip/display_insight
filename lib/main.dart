@@ -41,7 +41,7 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: corPadrao,
+        backgroundColor: corPadrao(),
         body: GestureDetector(
           onDoubleTap: toggleFullscreen,
           child: const Stack(

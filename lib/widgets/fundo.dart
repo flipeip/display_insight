@@ -16,7 +16,7 @@ class Fundo extends StatelessWidget {
     return Stack(
       children: [
         Ondas(
-          color: corSecundaria,
+          color: corSecundaria(),
           offsetPadding: sizeConstOf(context) * 280.0,
           waveCount: 30,
           duration: const Duration(seconds: 5),
@@ -26,10 +26,11 @@ class Fundo extends StatelessWidget {
           top: sizeConstOf(context) * -100,
           left: sizeConstOf(context) * -100,
           child: DecoratedBox(
-            decoration: const BoxDecoration(
-                color: corPadrao,
-                borderRadius: BorderRadius.all(Radius.circular(999.0))),
+            decoration: BoxDecoration(
+                color: corPadrao(),
+                borderRadius: const BorderRadius.all(Radius.circular(999.0))),
             child: ScalableImageWidget.fromSISource(
+              currentColor: corSecundaria(),
               si: ScalableImageSource.fromSvg(
                 rootBundle,
                 'assets/images/icone.svg',

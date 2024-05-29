@@ -1,3 +1,4 @@
+import 'package:display/tema.dart';
 import 'package:display/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -13,9 +14,12 @@ class LogoPrestcontas extends StatelessWidget {
       ),
       child: SizedBox(
         height: sizeConstOf(context) * 90,
-        child: Image.asset(
-          fit: BoxFit.fitHeight,
-          'assets/images/logo_prestcontas.png',
+        child: ColorFiltered(
+          colorFilter: ColorFilter.mode(corTexto(), BlendMode.srcIn),
+          child: Image.asset(
+            fit: BoxFit.fitHeight,
+            'assets/images/logo_prestcontas.png',
+          ),
         ),
       ),
     );
