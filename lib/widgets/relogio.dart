@@ -19,8 +19,9 @@ class _RelogioState extends State<Relogio> {
     final agora = DateTime.now();
     final horaAgora = agora.hour;
     final minutoAgora = agora.minute < 10 ? '0${agora.minute}' : agora.minute;
+    final segundosAgora = agora.second < 10 ? '0${agora.second}' : agora.second;
     setState(() {
-      hora = '$horaAgora:$minutoAgora';
+      hora = '$horaAgora:$minutoAgora:$segundosAgora';
     });
   }
 
