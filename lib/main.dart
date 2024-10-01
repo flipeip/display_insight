@@ -1,5 +1,5 @@
-import 'package:display/widgets/logo_prestcontas.dart';
-import 'package:display/widgets/relogio.dart';
+import 'widgets/logo_prestcontas.dart';
+import 'widgets/relogio.dart';
 import 'package:flutter/material.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -42,19 +42,13 @@ class _MainAppState extends State<MainApp> {
   }
 
   @override
-  void initState() {
-    firstFullScreen();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: corPadrao(),
+        backgroundColor: tema().corFundo,
         body: GestureDetector(
           onDoubleTap: toggleFullscreen,
-          child: const Stack(
+          child: Stack(
             children: [
               Fundo(),
               LogoFull(),

@@ -1,5 +1,5 @@
-import 'package:display/tema.dart';
-import 'package:display/utils.dart';
+import '../tema.dart';
+import '../utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:jovial_svg/jovial_svg.dart';
@@ -18,7 +18,7 @@ class LogoPrestcontas extends StatelessWidget {
         height: sizeConstOf(context) * 85,
         child: ScalableImageWidget.fromSISource(
           alignment: Alignment.topRight,
-          currentColor: corTexto(),
+          currentColor: tema().corTexto,
           si: ScalableImageSource.fromSI(
             rootBundle,
             'assets/vectors/logo_prestcontas.si',

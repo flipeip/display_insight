@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:display/tema.dart';
+import '../tema.dart';
 import 'package:flutter/material.dart';
 
 import '../utils.dart';
@@ -45,7 +45,7 @@ class _RelogioState extends State<Relogio> {
       child: Text(
         hora,
         style: TextStyle(
-          color: corTexto(),
+          color: tema().corTexto,
           fontWeight: FontWeight.bold,
           fontSize: sizeConstOf(context) * 90.0,
         ),
