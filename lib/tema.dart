@@ -41,7 +41,7 @@ Tema tema() {
   return switch (DateTime.now().month) {
     DateTime.december => temaNatal,
     DateTime.november => temaNovembroAzul,
-    DateTime.october => temaNatal,
+    DateTime.october => temaOutubroRosa,
     DateTime.september => temaSetembroAmarelo,
     _ => temaPadrao,
   };
