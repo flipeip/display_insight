@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   jovial_svg: ^1.1.21
+  snow_widget:
+    git: https://github.com/Punkachu/SnowingWidget
   window_manager: ^0.4.2
 
 dev_dependencies:

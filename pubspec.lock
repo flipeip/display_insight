@@ -57,6 +57,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  cupertino_icons:
+    dependency: transitive
+    description:
+      name: cupertino_icons
+      sha256: ba631d1c7f7bef6b729a622b7b752645a2d076dba9976925b8f25725a30e1ee6
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.8"
   fake_async:
     dependency: transitive
     description:
@@ -216,6 +224,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  snow_widget:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "67383b6b6233e2517a1c2322f19488485f493a2f"
+      url: "https://github.com/Punkachu/SnowingWidget"
+    source: git
+    version: "1.0.0+1"
   source_span:
     dependency: transitive
     description:

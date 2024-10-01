@@ -1,3 +1,5 @@
+import 'package:snow_widget/widget/snow_widget.dart';
+
 import 'widgets/logo_prestcontas.dart';
 import 'widgets/relogio.dart';
 import 'package:flutter/material.dart';
@@ -44,20 +46,32 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: tema().corFundo,
-        body: GestureDetector(
-          onDoubleTap: toggleFullscreen,
-          child: Stack(
-            children: [
-              Fundo(),
-              LogoFull(),
-              Relogio(),
-              Positioned(
-                right: 0.0,
-                child: LogoPrestcontas(),
-              ),
-            ],
+      home: MouseRegion(
+        cursor: SystemMouseCursors.none,
+        child: Scaffold(
+          backgroundColor: tema().corFundo,
+          body: GestureDetector(
+            onDoubleTap: toggleFullscreen,
+            child: Stack(
+              children: [
+                Fundo(),
+                if (tema().neve)
+                  Positioned.fill(
+                    child: SnowWidget(
+                      totalSnow: 500,
+                      speed: 0.5,
+                      isRunning: true,
+                      snowColor: Colors.white,
+                    ),
+                  ),
+                LogoFull(),
+                Relogio(),
+                Positioned(
+                  right: 0.0,
+                  child: LogoPrestcontas(),
+                ),
+              ],
+            ),
           ),
         ),
       ),
