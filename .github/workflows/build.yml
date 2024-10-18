@@ -35,7 +35,7 @@ jobs:
             args: 7z a -tzip display_insight.zip build\windows\runner\Release\
 
         - name: Fazendo upload do zip
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v4
           with:
             name: Releases
             path: display_insight.zip
