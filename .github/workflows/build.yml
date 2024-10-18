@@ -30,9 +30,11 @@ jobs:
           run: flutter build windows
 
         - name: Comprimindo os arquivos da build
-          uses: edgarrc/action-7z@v1
+          uses: thedoctor0/zip-release@0.7.5
           with:
-            args: 7z a -tzip display_insight.zip build\windows\runner\Release\
+            filename: 'display_insight.zip'
+            path: build\windows\runner\Release\
+
 
         - name: Fazendo upload do zip
           uses: actions/upload-artifact@v4
