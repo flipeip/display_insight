@@ -33,7 +33,7 @@ jobs:
           uses: thedoctor0/zip-release@0.7.5
           with:
             filename: 'display_insight.zip'
-            path: build\windows\runner\Release\
+            path: build\windows\x64\runner\Release\
 
 
         - name: Fazendo upload do zip
