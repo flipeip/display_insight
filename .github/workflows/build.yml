@@ -1,0 +1,70 @@
+name: "Build para Windows"
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build & Release
+    runs-on: windows-latest
+    steps:
+
+        - name: Checkout do repositório
+          uses: actions/checkout@v4
+
+        - name: Configurando o Flutter
+          uses: subosito/flutter-action@v2
+          with:
+            channel: 'stable'
+            cache: true
+
+        - name: Instalando as dependências
+          run: flutter pub get
+
+        - name: Fazer build do app
+          run: flutter build windows
+
+        - name: Comprimindo os arquivos da build
+          uses: edgarrc/action-7z@v1
+          with:
+            args: 7z a -tzip display_insight.zip build\windows\runner\Release\
+
+        - name: Fazendo upload do zip
+          uses: actions/upload-artifact@v2
+          with:
+            name: Releases
+            path: display_insight.zip
+
+        - name: Extraindo versão do pubspec.yaml
+          id: extract_version
+          run: |
+            version=$(grep '^version: ' pubspec.yaml | cut -d ' ' -f 2 | tr -d '\r')
+            echo "VERSION=$version" >> $GITHUB_ENV
+
+        - name: Verificando se a versão existe
+          id: check_tag
+          run: |
+            if git rev-parse "v${{ env.VERSION }}" >/dev/null 2>&1; then
+            echo "TAG_EXISTS=true" >> $GITHUB_ENV
+            else
+            echo "TAG_EXISTS=false" >> $GITHUB_ENV
+            fi
+
+        - name: Modificando o nome da versão
+          if: env.TAG_EXISTS == 'true'
+          id: modify_tag
+          run: |
+            new_version="${{ env.VERSION }}-build-${{ github.run_number }}"
+            echo "VERSION=$new_version" >> $GITHUB_ENV
+
+        - name: Criando lançamento
+          uses: ncipollo/release-action@v1
+          with:
+            artifacts: "build/app/outputs/flutter-apk/app-release.apk,build/app/outputs/bundle/release/app-release.aab,build/ios_build.tar.gz"
+            tag: v${{ env.VERSION }}
+            token: ${{ secrets.TOKEN }}
