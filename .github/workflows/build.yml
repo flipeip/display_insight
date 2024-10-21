@@ -12,6 +12,7 @@ jobs:
   build:
     name: Build & Release
     runs-on: windows-latest
+    permissions: write-all
     steps:
 
         - name: Checkout do repositório
@@ -46,7 +47,6 @@ jobs:
           uses: JeeMateTeam/get-flutter-version@v2.0.0
 
         - name: Modificando o nome da versão
-          if: env.TAG_EXISTS == 'true'
           id: modify_tag
           run: |
             echo "VERSION=v${{ steps.get_flutter_version.outputs.version_number }}+${{ steps.get_flutter_version.outputs.build_number }}-build-${{ github.run_number }}" >> $GITHUB_ENV
