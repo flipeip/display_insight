@@ -35,7 +35,6 @@ jobs:
             filename: 'display_insight.zip'
             path: build\windows\x64\runner\Release\
 
-
         - name: Fazendo upload do zip
           uses: actions/upload-artifact@v4
           with:
@@ -43,15 +42,13 @@ jobs:
             path: display_insight.zip
 
         - name: Extraindo versão do pubspec.yaml
-          id: extract_version
-          run: |
-            version=$(grep '^version: ' pubspec.yaml | cut -d ' ' -f 2 | tr -d '\r')
-            echo "VERSION=$version" >> $GITHUB_ENV
+          id: get_flutter_version
+          uses: JeeMateTeam/get-flutter-version@v2.0.0
 
         - name: Verificando se a versão existe
           id: check_tag
           run: |
-            if git rev-parse "v${{ env.VERSION }}" >/dev/null 2>&1; then
+            if git rev-parse "v${{ steps.get_flutter_version.outputs.version_number }}+${{ steps.get_flutter_version.outputs.build_number }}" >/dev/null 2>&1; then
             echo "TAG_EXISTS=true" >> $GITHUB_ENV
             else
             echo "TAG_EXISTS=false" >> $GITHUB_ENV
@@ -61,7 +58,7 @@ jobs:
           if: env.TAG_EXISTS == 'true'
           id: modify_tag
           run: |
-            new_version="${{ env.VERSION }}-build-${{ github.run_number }}"
+            new_version="v${{ steps.get_flutter_version.outputs.version_number }}+${{ steps.get_flutter_version.outputs.build_number }}-build-${{ github.run_number }}"
             echo "VERSION=$new_version" >> $GITHUB_ENV
 
         - name: Criando lançamento
