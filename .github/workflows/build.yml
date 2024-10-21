@@ -45,21 +45,11 @@ jobs:
           id: get_flutter_version
           uses: JeeMateTeam/get-flutter-version@v2.0.0
 
-        - name: Verificando se a versão existe
-          id: check_tag
-          run: |
-            if git rev-parse "v${{ steps.get_flutter_version.outputs.version_number }}+${{ steps.get_flutter_version.outputs.build_number }}" >/dev/null 2>&1; then
-            echo "TAG_EXISTS=true" >> $GITHUB_ENV
-            else
-            echo "TAG_EXISTS=false" >> $GITHUB_ENV
-            fi
-
         - name: Modificando o nome da versão
           if: env.TAG_EXISTS == 'true'
           id: modify_tag
           run: |
-            new_version="v${{ steps.get_flutter_version.outputs.version_number }}+${{ steps.get_flutter_version.outputs.build_number }}-build-${{ github.run_number }}"
-            echo "VERSION=$new_version" >> $GITHUB_ENV
+            echo "VERSION=v${{ steps.get_flutter_version.outputs.version_number }}+${{ steps.get_flutter_version.outputs.build_number }}-build-${{ github.run_number }}" >> $GITHUB_ENV
 
         - name: Criando lançamento
           uses: ncipollo/release-action@v1
