@@ -26,6 +26,12 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   bool fullscreen = false;
 
+  @override
+  void initState() {
+    super.initState();
+    firstFullScreen();
+  }
+
   void toggleFullscreen() {
     setState(() {
       fullscreen = !fullscreen;
