@@ -33,22 +33,21 @@ jobs:
         - name: Comprimindo os arquivos da build
           uses: thedoctor0/zip-release@0.7.5
           with:
-            filename: display_insight.zip
+            filename: 'display_insight.zip'
             directory: build\windows\x64\runner\Release\
-            path: ..\..\..\..\..\
-
-        - name: Fazendo upload do zip
-          uses: actions/upload-artifact@v4
-          with:
-            name: Releases
-            path: display_insight.zip
 
         - name: Extraindo versão do pubspec.yaml
           id: get_flutter_version
           uses: JeeMateTeam/get-flutter-version@v2.0.0
 
+        - name: Fazendo upload do zip
+          uses: actions/upload-artifact@v4
+          with:
+            name: display_insight_${{ steps.get_flutter_version.outputs.version_number }}+${{ steps.get_flutter_version.outputs.build_number }}_windows
+            path: build\windows\x64\runner\Release\display_insight.zip
+
         - name: Criando lançamento
           uses: ncipollo/release-action@v1
           with:
-            artifacts: "display_insight.zip"
-            tag: v${{ steps.get_flutter_version.outputs.version_number }}+${{ steps.get_flutter_version.outputs.build_number }}-build-${{ github.run_number }}
+            artifacts: "display_insight_${{ steps.get_flutter_version.outputs.version_number }}+${{ steps.get_flutter_version.outputs.build_number }}_windows.zip"
+            tag: v${{ steps.get_flutter_version.outputs.version_number }}+${{ steps.get_flutter_version.outputs.build_number }}
