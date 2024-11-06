@@ -33,14 +33,15 @@ jobs:
         - name: Comprimindo os arquivos da build
           uses: thedoctor0/zip-release@0.7.5
           with:
-            filename: 'display_insight.zip'
+            filename: display_insight.zip
             directory: build\windows\x64\runner\Release\
+            path: ..\..\..\..\..\
 
         - name: Fazendo upload do zip
           uses: actions/upload-artifact@v4
           with:
             name: Releases
-            path: build\windows\x64\runner\Release\display_insight.zip
+            path: display_insight.zip
 
         - name: Extraindo versão do pubspec.yaml
           id: get_flutter_version
