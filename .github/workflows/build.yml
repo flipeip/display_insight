@@ -49,5 +49,5 @@ jobs:
         - name: Criando lançamento
           uses: ncipollo/release-action@v1
           with:
-            artifacts: "display_insight_${{ steps.get_flutter_version.outputs.version_number }}+${{ steps.get_flutter_version.outputs.build_number }}_windows.zip"
+            artifacts: "display_insight_${{ steps.get_flutter_version.outputs.version_number }}+${{ steps.get_flutter_version.outputs.build_number }}_windows"
             tag: v${{ steps.get_flutter_version.outputs.version_number }}+${{ steps.get_flutter_version.outputs.build_number }}
