@@ -50,5 +50,5 @@ jobs:
           uses: ncipollo/release-action@v1.14.0
           with:
             name: v${{ steps.get_flutter_version.outputs.version_number }} build ${{ steps.get_flutter_version.outputs.build_number }}
-            artifacts: "display_insight_${{ steps.get_flutter_version.outputs.version_number }}+${{ steps.get_flutter_version.outputs.build_number }}_windows.zip"
+            artifacts: "build\windows\x64\runner\Release\display_insight.zip"
             tag: v${{ steps.get_flutter_version.outputs.version_number }}-build-${{ steps.get_flutter_version.outputs.build_number }}
