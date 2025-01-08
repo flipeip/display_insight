@@ -27,7 +27,7 @@ class Tema {
   }
 }
 
-const temaPadrao = Tema(Color(0xFF8D1317), Color(0xFF730B0E));
+const temaPadrao = Tema(Color(0xFF730B0E), Color(0xFF8D1317));
 const temaOutubroRosa = Tema(Color(0xFFD15499), Color(0xFFB63F8E));
 const temaNovembroAzul = Tema(Color(0xFF09379B), Color(0xFF1760B4));
 const temaSetembroAmarelo = Tema(
