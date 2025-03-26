@@ -98,7 +98,6 @@ class _RelogioState extends State<Relogio> {
     final segundosAgora = agora.second < 10 ? '0${agora.second}' : agora.second;
     final diaAgora = agora.day < 10 ? '0${agora.day}' : agora.day;
     final mesAgora = Meses.values[agora.month - 1].nome;
-    final anoAgora = agora.year;
     final diaSemana = DiaSemana.values[agora.weekday - 1].nome;
     setState(() {
       hora = '$horaAgora:$minutoAgora:$segundosAgora';
