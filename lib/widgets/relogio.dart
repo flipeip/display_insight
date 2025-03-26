@@ -88,8 +88,8 @@ class Relogio extends StatefulWidget {
 }
 
 class _RelogioState extends State<Relogio> {
-  String hora = '00:00';
-  String dia = '00/00/0000 xxx';
+  String hora = '';
+  String dia = '';
 
   atualizarHora() {
     final agora = DateTime.now();
