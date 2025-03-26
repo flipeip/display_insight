@@ -147,7 +147,7 @@ class _RipplePainter extends CustomPainter {
         maxRadius * normalizedValue; // Scale radius based on normalized value
     final double opacity = (1.0 - normalizedValue)
         .clamp(0.0, 1.0); // Compute opacity based on normalized value
-    final Color newColor = color.withOpacity(normalizeOpacity ? opacity : 1.0);
+    final Color newColor = color.withAlpha((255.0 * opacity).round());
 
     final Paint paint = Paint()
       ..color = newColor
