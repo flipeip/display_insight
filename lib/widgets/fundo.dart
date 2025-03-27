@@ -1,15 +1,17 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:jovial_svg/jovial_svg.dart';
+import 'package:snow_widget/widget/snow_widget.dart';
 
 import '../tema.dart';
 import '../utils.dart';
 import 'ondas.dart';
 
 class Fundo extends StatelessWidget {
-  const Fundo({
-    super.key,
-  });
+  final Color? corDasParticulas;
+
+  const Fundo({super.key, this.corDasParticulas});
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +19,11 @@ class Fundo extends StatelessWidget {
       children: [
         Ondas(
           color: tema().corPrimaria,
+          repeat: true,
           offsetPadding: sizeConstOf(context) * 280.0,
           waveCount: 30,
           duration: const Duration(seconds: 5),
           strokeWidth: sizeConstOf(context) * 10,
-        ),
-        Positioned(
-          top: sizeConstOf(context) * -100,
-          left: sizeConstOf(context) * -100,
           child: DecoratedBox(
             decoration: BoxDecoration(
                 color: tema().corFundo,
@@ -35,10 +34,19 @@ class Fundo extends StatelessWidget {
                 rootBundle,
                 'assets/vectors/icone.si',
               ),
-              scale: sizeConstOf(context) * 10.0,
+              scale: 24 * sizeConstOf(context),
             ),
           ),
         ),
+        if (corDasParticulas != null)
+          Positioned.fill(
+            child: SnowWidget(
+              totalSnow: 500,
+              speed: 0.5,
+              isRunning: true,
+              snowColor: corDasParticulas!,
+            ),
+          ),
       ],
     );
   }

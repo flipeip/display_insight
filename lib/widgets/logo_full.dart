@@ -16,10 +16,9 @@ class LogoFull extends StatelessWidget {
       child: ScalableImageWidget.fromSISource(
         currentColor: tema().corTexto,
         si: ScalableImageSource.fromSI(
-            rootBundle,
-            tema().neve
-                ? 'assets/vectors/logo_natal.si'
-                : 'assets/vectors/logo.si'),
+          rootBundle,
+          tema().logo,
+        ),
         scale: sizeConstOf(context) * 4,
       ),
     );

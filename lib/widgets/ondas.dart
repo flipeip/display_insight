@@ -15,6 +15,7 @@ class Ondas extends StatefulWidget {
     this.offset = Offset.zero,
     this.strokeWidth = 4.0,
     this.offsetPadding = 0,
+    required this.child,
   });
 
   ///Color of the ripple
@@ -44,12 +45,16 @@ class Ondas extends StatefulWidget {
   //if the outer circles disappear
   final bool normalizeOpacity;
 
+  final Widget child;
+
   @override
   OndasState createState() => OndasState();
 }
 
 class OndasState extends State<Ondas> with TickerProviderStateMixin {
   late AnimationController _controller;
+  Size childSize = Size.zero;
+  Widget? buildChild;
 
   @override
   void initState() {
@@ -59,12 +64,35 @@ class OndasState extends State<Ondas> with TickerProviderStateMixin {
           duration: widget.duration,
           vsync: this,
         );
+
     if (widget.repeat) {
       _controller.repeat();
     } else if (widget.animationController == null) {
       _controller.forward();
       Future.delayed(widget.duration).then((value) => _controller.stop());
     }
+
+    setState(() {
+      buildChild = Builder(
+        builder: (context) {
+          calculateChildSize(context);
+          return widget.child;
+        },
+      );
+    });
+  }
+
+  void calculateChildSize(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.visitChildElements(
+        (element) {
+          final RenderBox renderBox = element.renderObject as RenderBox;
+          setState(() {
+            childSize = renderBox.size;
+          });
+        },
+      );
+    });
   }
 
   @override
@@ -85,36 +113,29 @@ class OndasState extends State<Ondas> with TickerProviderStateMixin {
         widget.offsetPadding,
         color: widget.color,
       ),
-      child: Center(
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(100),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: RadialGradient(
-                colors: <Color>[
-                  widget.color,
-                  Colors.transparent,
-                ],
+      child: Stack(
+        children: [
+          Center(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: RadialGradient(
+                    colors: <Color>[
+                      widget.color,
+                      Colors.transparent,
+                    ],
+                  ),
+                ),
               ),
             ),
-            // child: ScaleTransition(
-            //   scale: widget.childTween != null
-            //       ? widget.childTween!.animate(
-            //           CurvedAnimation(
-            //             parent: _controller,
-            //             curve: _CurveWave(),
-            //           ),
-            //         )
-            //       : Tween(begin: 0.9, end: 1.0).animate(
-            //           CurvedAnimation(
-            //             parent: _controller,
-            //             curve: _CurveWave(),
-            //           ),
-            //         ),
-            //   child: widget.child,
-            // ),
           ),
-        ),
+          Positioned(
+            top: (childSize.height * -0.5) + widget.offsetPadding,
+            left: (childSize.width * -0.5) + widget.offsetPadding,
+            child: buildChild ?? widget.child,
+          ),
+        ],
       ),
     );
   }

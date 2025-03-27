@@ -1,12 +1,9 @@
-import 'package:snow_widget/widget/snow_widget.dart';
-
 import 'widgets/logo_prestcontas.dart';
 import 'widgets/relogio.dart';
 import 'package:flutter/material.dart';
 import 'package:window_manager/window_manager.dart';
 
 import 'tema.dart';
-import 'widgets/fundo.dart';
 import 'widgets/logo_full.dart';
 
 void main() async {
@@ -60,16 +57,7 @@ class _MainAppState extends State<MainApp> {
             onDoubleTap: toggleFullscreen,
             child: Stack(
               children: [
-                Fundo(),
-                if (tema().neve)
-                  Positioned.fill(
-                    child: SnowWidget(
-                      totalSnow: 500,
-                      speed: 0.5,
-                      isRunning: true,
-                      snowColor: Colors.white,
-                    ),
-                  ),
+                tema().fundo,
                 LogoFull(),
                 Relogio(),
                 Positioned(

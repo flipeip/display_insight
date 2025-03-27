@@ -1,48 +1,76 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
+
+import 'widgets/fundo.dart';
+import 'widgets/fundo_quadriculado.dart';
 
 class Tema {
   final Color corFundo;
   final Color corPrimaria;
   final Color corTexto;
-  final bool neve;
+  final Widget fundo;
+  final String logo;
 
-  const Tema(
-    this.corFundo,
-    this.corPrimaria, {
+  const Tema({
+    this.corFundo = const Color(0xFF730B0E),
+    this.corPrimaria = const Color(0xFF8D1317),
     this.corTexto = const Color(0xFFFFFFFF),
-    this.neve = false,
+    this.fundo = const Fundo(),
+    this.logo = 'assets/vectors/logo.si',
   });
 
   Tema copyWith(
       {final Color? corFundo,
       final Color? corPrimaria,
       final Color? corTexto,
-      final bool? neve}) {
+      final Widget? fundo}) {
     return Tema(
-      corPrimaria ?? this.corPrimaria,
-      corFundo ?? this.corFundo,
+      corPrimaria: corPrimaria ?? this.corPrimaria,
+      corFundo: corFundo ?? this.corFundo,
       corTexto: corTexto ?? this.corTexto,
-      neve: neve ?? this.neve,
+      fundo: fundo ?? Fundo(),
     );
   }
 }
 
-const temaPadrao = Tema(Color(0xFF730B0E), Color(0xFF8D1317));
-const temaOutubroRosa = Tema(Color(0xFFD15499), Color(0xFFB63F8E));
-const temaNovembroAzul = Tema(Color(0xFF09379B), Color(0xFF1760B4));
+const temaOutubroRosa = Tema(
+  corFundo: Color(0xFFD15499),
+  corPrimaria: Color(0xFFB63F8E),
+);
+
+const temaNovembroAzul = Tema(
+  corFundo: Color(0xFF09379B),
+  corPrimaria: Color(0xFF1760B4),
+);
+
 const temaSetembroAmarelo = Tema(
-  Color.fromARGB(255, 223, 180, 38),
-  Color.fromARGB(255, 206, 149, 26),
+  corFundo: Color.fromARGB(255, 223, 180, 38),
+  corPrimaria: Color.fromARGB(255, 206, 149, 26),
   corTexto: Color.fromARGB(255, 44, 5, 0),
 );
-final temaNatal = temaPadrao.copyWith(neve: true);
+
+final temaNatal = Tema(fundo: Fundo(corDasParticulas: Colors.white));
+
+final temaSanjas = Tema(
+  fundo: FundoQuadriculado(),
+);
 
 Tema tema() {
-  return switch (DateTime.now().month) {
-    DateTime.december => temaNatal,
-    DateTime.november => temaNovembroAzul,
-    DateTime.october => temaOutubroRosa,
+  final now = DateTime.now();
+
+  if (now.month == DateTime.december ||
+      (now.month == DateTime.november && now.day >= 25)) {
+    return temaNatal;
+  }
+
+  if (now.month == DateTime.june ||
+      (now.month == DateTime.april && now.day >= 25)) {
+    return temaSanjas;
+  }
+
+  return switch (now.month) {
     DateTime.september => temaSetembroAmarelo,
-    _ => temaPadrao,
+    DateTime.october => temaOutubroRosa,
+    DateTime.november => temaNovembroAzul,
+    _ => Tema(),
   };
 }
