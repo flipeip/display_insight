@@ -96,7 +96,7 @@ class _RelogioState extends State<Relogio> {
     final horaAgora = agora.hour;
     final minutoAgora = agora.minute < 10 ? '0${agora.minute}' : agora.minute;
     final segundosAgora = agora.second < 10 ? '0${agora.second}' : agora.second;
-    final diaAgora = agora.day < 10 ? '0${agora.day}' : agora.day;
+    final diaAgora = agora.day;
     final mesAgora = Meses.values[agora.month - 1].nome;
     final diaSemana = DiaSemana.values[agora.weekday - 1].nome;
     setState(() {
@@ -131,7 +131,7 @@ class _RelogioState extends State<Relogio> {
             style: TextStyle(
               color: tema().corTexto,
               fontWeight: FontWeight.bold,
-              height: sizeConstOf(context) * 0.9,
+              height: 0.9,
               fontSize: sizeConstOf(context) * 90.0,
             ),
           ),
