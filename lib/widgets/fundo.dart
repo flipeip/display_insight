@@ -34,7 +34,7 @@ class Fundo extends StatelessWidget {
                 rootBundle,
                 'assets/vectors/icone.si',
               ),
-              scale: 24 * sizeConstOf(context),
+              scale: 12 * sizeConstOf(context),
             ),
           ),
         ),

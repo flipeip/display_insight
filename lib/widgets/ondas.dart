@@ -71,28 +71,6 @@ class OndasState extends State<Ondas> with TickerProviderStateMixin {
       _controller.forward();
       Future.delayed(widget.duration).then((value) => _controller.stop());
     }
-
-    setState(() {
-      buildChild = Builder(
-        builder: (context) {
-          calculateChildSize(context);
-          return widget.child;
-        },
-      );
-    });
-  }
-
-  void calculateChildSize(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.visitChildElements(
-        (element) {
-          final RenderBox renderBox = element.renderObject as RenderBox;
-          setState(() {
-            childSize = renderBox.size;
-          });
-        },
-      );
-    });
   }
 
   @override
@@ -103,40 +81,52 @@ class OndasState extends State<Ondas> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: _RipplePainter(
-        _controller,
-        widget.waveCount,
-        widget.normalizeOpacity,
-        widget.strokeWidth,
-        widget.offset,
-        widget.offsetPadding,
-        color: widget.color,
-      ),
-      child: Stack(
-        children: [
-          Center(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(100),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: RadialGradient(
-                    colors: <Color>[
-                      widget.color,
-                      Colors.transparent,
-                    ],
+    final mediaSize = MediaQuery.of(context).size;
+
+    return Stack(
+      children: [
+        CustomPaint(
+          painter: _RipplePainter(
+            _controller,
+            widget.waveCount,
+            widget.normalizeOpacity,
+            widget.strokeWidth,
+            widget.offset,
+            widget.offsetPadding,
+            color: widget.color,
+          ),
+          child: Stack(
+            children: [
+              Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: RadialGradient(
+                        colors: <Color>[
+                          widget.color,
+                          Colors.transparent,
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
+              Positioned(
+                left: (mediaSize.width * -0.5) + widget.offsetPadding,
+                top: (mediaSize.height * -0.5) + widget.offsetPadding,
+                child: SizedBox(
+                  width: mediaSize.width,
+                  height: mediaSize.height,
+                  child: Center(
+                    child: widget.child,
+                  ),
+                ),
+              ),
+            ],
           ),
-          Positioned(
-            top: (childSize.height * -0.5) + widget.offsetPadding,
-            left: (childSize.width * -0.5) + widget.offsetPadding,
-            child: buildChild ?? widget.child,
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
