@@ -22,32 +22,20 @@ enum Meses {
   dezembro;
 
   String get nome {
-    switch (this) {
-      case Meses.janeiro:
-        return 'Janeiro';
-      case Meses.fevereiro:
-        return 'Fevereiro';
-      case Meses.marco:
-        return 'Março';
-      case Meses.abril:
-        return 'Abril';
-      case Meses.maio:
-        return 'Maio';
-      case Meses.junho:
-        return 'Junho';
-      case Meses.julho:
-        return 'Julho';
-      case Meses.agosto:
-        return 'Agosto';
-      case Meses.setembro:
-        return 'Setembro';
-      case Meses.outubro:
-        return 'Outubro';
-      case Meses.novembro:
-        return 'Novembro';
-      case Meses.dezembro:
-        return 'Dezembro';
-    }
+    return switch (this) {
+        Meses.janeiro => 'Janeiro',
+        Meses.fevereiro => 'Fevereiro',
+        Meses.marco => 'Março',
+        Meses.abril => 'Abril',
+        Meses.maio => 'Maio',
+        Meses.junho => 'Junho',
+        Meses.julho => 'Julho',
+        Meses.agosto => 'Agosto',
+        Meses.setembro => 'Setembro',
+        Meses.outubro => 'Outubro',
+        Meses.novembro => 'Novembro',
+        Meses.dezembro => 'Dezembro',
+    };
   }
 }
 
