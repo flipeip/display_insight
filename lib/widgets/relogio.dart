@@ -49,22 +49,15 @@ enum DiaSemana {
   sabado;
 
   String get nome {
-    switch (this) {
-      case DiaSemana.domingo:
-        return 'Domingo';
-      case DiaSemana.segunda:
-        return 'Segunda-feira';
-      case DiaSemana.terca:
-        return 'Terça-feira';
-      case DiaSemana.quarta:
-        return 'Quarta-feira';
-      case DiaSemana.quinta:
-        return 'Quinta-feira';
-      case DiaSemana.sexta:
-        return 'Sexta-feira';
-      case DiaSemana.sabado:
-        return 'Sábado';
-    }
+    return switch (this) {
+        DiaSemana.domingo => 'Domingo',
+        DiaSemana.segunda => 'Segunda-feira',
+        DiaSemana.terca => 'Terça-feira',
+        DiaSemana.quarta => 'Quarta-feira',
+        DiaSemana.quinta => 'Quinta-feira',
+        DiaSemana.sexta => 'Sexta-feira',
+        DiaSemana.sabado => 'Sábado';
+    };
   }
 }
 
