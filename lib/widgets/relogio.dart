@@ -56,7 +56,7 @@ enum DiaSemana {
         DiaSemana.quarta => 'Quarta-feira',
         DiaSemana.quinta => 'Quinta-feira',
         DiaSemana.sexta => 'Sexta-feira',
-        DiaSemana.sabado => 'Sábado';
+        DiaSemana.sabado => 'Sábado',
     };
   }
 }
