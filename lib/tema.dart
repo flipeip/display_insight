@@ -63,7 +63,7 @@ Tema tema() {
   }
 
   if (now.month == DateTime.june ||
-      (now.month == DateTime.april && now.day >= 25)) {
+      (now.month == DateTime.may && now.day >= 25)) {
     return temaSanjas;
   }
 
