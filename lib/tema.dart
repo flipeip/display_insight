@@ -48,10 +48,14 @@ const temaSetembroAmarelo = Tema(
   corTexto: Color.fromARGB(255, 44, 5, 0),
 );
 
-final temaNatal = Tema(fundo: Fundo(corDasParticulas: Colors.white));
+final temaNatal = Tema(
+  fundo: Fundo(corDasParticulas: Colors.white),
+  logo: 'assets/vectors/logo_natal.si',
+);
 
 final temaSanjas = Tema(
   fundo: FundoQuadriculado(),
+  logo: 'assets/vectors/logo_sanjas.si',
 );
 
 Tema tema() {
