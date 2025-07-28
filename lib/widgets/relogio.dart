@@ -1,10 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../tema.dart';
-import 'package:flutter/material.dart';
-
 import '../utils.dart';
 
 enum Meses {
@@ -23,18 +22,18 @@ enum Meses {
 
   String get nome {
     return switch (this) {
-        Meses.janeiro => 'Janeiro',
-        Meses.fevereiro => 'Fevereiro',
-        Meses.marco => 'Março',
-        Meses.abril => 'Abril',
-        Meses.maio => 'Maio',
-        Meses.junho => 'Junho',
-        Meses.julho => 'Julho',
-        Meses.agosto => 'Agosto',
-        Meses.setembro => 'Setembro',
-        Meses.outubro => 'Outubro',
-        Meses.novembro => 'Novembro',
-        Meses.dezembro => 'Dezembro',
+      Meses.janeiro => 'Janeiro',
+      Meses.fevereiro => 'Fevereiro',
+      Meses.marco => 'Março',
+      Meses.abril => 'Abril',
+      Meses.maio => 'Maio',
+      Meses.junho => 'Junho',
+      Meses.julho => 'Julho',
+      Meses.agosto => 'Agosto',
+      Meses.setembro => 'Setembro',
+      Meses.outubro => 'Outubro',
+      Meses.novembro => 'Novembro',
+      Meses.dezembro => 'Dezembro',
     };
   }
 }
@@ -50,13 +49,13 @@ enum DiaSemana {
 
   String get nome {
     return switch (this) {
-        DiaSemana.domingo => 'Domingo',
-        DiaSemana.segunda => 'Segunda-feira',
-        DiaSemana.terca => 'Terça-feira',
-        DiaSemana.quarta => 'Quarta-feira',
-        DiaSemana.quinta => 'Quinta-feira',
-        DiaSemana.sexta => 'Sexta-feira',
-        DiaSemana.sabado => 'Sábado',
+      DiaSemana.domingo => 'Domingo',
+      DiaSemana.segunda => 'Segunda-feira',
+      DiaSemana.terca => 'Terça-feira',
+      DiaSemana.quarta => 'Quarta-feira',
+      DiaSemana.quinta => 'Quinta-feira',
+      DiaSemana.sexta => 'Sexta-feira',
+      DiaSemana.sabado => 'Sábado',
     };
   }
 }
@@ -72,7 +71,7 @@ class _RelogioState extends State<Relogio> {
   String hora = '';
   String dia = '';
 
-  atualizarHora() {
+  void atualizarHora() {
     final agora = DateTime.now();
     final horaAgora = agora.hour;
     final minutoAgora = agora.minute < 10 ? '0${agora.minute}' : agora.minute;
