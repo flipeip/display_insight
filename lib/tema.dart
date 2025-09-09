@@ -43,9 +43,8 @@ const temaNovembroAzul = Tema(
 );
 
 const temaSetembroAmarelo = Tema(
-  corFundo: Color.fromARGB(255, 223, 180, 38),
-  corPrimaria: Color.fromARGB(255, 206, 149, 26),
-  corTexto: Color.fromARGB(255, 44, 5, 0),
+  corFundo: Color.fromARGB(255, 223, 169, 21),
+  corPrimaria: Color.fromARGB(255, 214, 136, 19),
 );
 
 final temaNatal = Tema(
