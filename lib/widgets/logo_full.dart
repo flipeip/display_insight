@@ -13,6 +13,17 @@ class LogoFull extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
+      child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(999),
+        boxShadow: [
+          BoxShadow(
+            color: tema().sombraLogo.withAlpha(50),
+            blurRadius: 120,
+            offset: Offset(0, 15)
+          ),
+        ],
+      ),
       child: ScalableImageWidget.fromSISource(
         currentColor: tema().corTexto,
         si: ScalableImageSource.fromSI(
@@ -21,6 +32,7 @@ class LogoFull extends StatelessWidget {
         ),
         scale: sizeConstOf(context) * 4,
       ),
+    )
     );
   }
 }

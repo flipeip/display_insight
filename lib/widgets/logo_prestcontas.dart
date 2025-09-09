@@ -14,16 +14,28 @@ class LogoPrestcontas extends StatelessWidget {
         vertical: sizeConstOf(context) * 45,
         horizontal: sizeConstOf(context) * 60,
       ),
-      child: SizedBox(
-        height: sizeConstOf(context) * 85,
-        child: ScalableImageWidget.fromSISource(
-          alignment: Alignment.topRight,
-          currentColor: tema().corTexto,
-          si: ScalableImageSource.fromSI(
-            rootBundle,
-            'assets/vectors/logo_prestcontas.si',
+      child: Container(
+        decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(999),
+        boxShadow: [
+          BoxShadow(
+            color: tema().sombraLogo,
+            blurRadius: 60,
+            offset: Offset(60, 0)
           ),
-          scale: sizeConstOf(context) * 4,
+        ],
+      ),
+        child: SizedBox(
+          height: sizeConstOf(context) * 85,
+          child: ScalableImageWidget.fromSISource(
+            alignment: Alignment.topRight,
+            currentColor: tema().corTexto,
+            si: ScalableImageSource.fromSI(
+              rootBundle,
+              'assets/vectors/logo_prestcontas.si',
+            ),
+            scale: sizeConstOf(context) * 4,
+          ),
         ),
       ),
     );

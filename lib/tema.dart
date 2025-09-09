@@ -30,6 +30,13 @@ class Tema {
       fundo: fundo ?? Fundo(),
     );
   }
+
+  Color get sombraLogo => Color.fromARGB(
+    corFundo.a.ceil() + 70,
+    corFundo.r.ceil() + 60,
+    corFundo.g.ceil(),
+    corFundo.b.ceil()
+  );
 }
 
 const temaOutubroRosa = Tema(
@@ -43,8 +50,8 @@ const temaNovembroAzul = Tema(
 );
 
 const temaSetembroAmarelo = Tema(
-  corFundo: Color.fromARGB(255, 255, 148, 9),
-  corPrimaria: Color.fromARGB(255, 255, 182, 71),
+  corFundo: Color.fromARGB(255, 255, 189, 9),
+  corPrimaria: Color.fromARGB(255, 255, 220, 66),
 );
 
 final temaNatal = Tema(

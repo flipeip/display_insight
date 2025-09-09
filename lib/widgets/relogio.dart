@@ -102,27 +102,40 @@ class _RelogioState extends State<Relogio> {
         horizontal: sizeConstOf(context) * 60.0,
         vertical: sizeConstOf(context) * 15,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Gap(sizeConstOf(context) * 20),
-          Text(
-            hora,
-            style: TextStyle(
-              color: tema().corTexto,
-              fontWeight: FontWeight.bold,
-              height: 0.9,
-              fontSize: sizeConstOf(context) * 90.0,
-            ),
-          ),
-          Text(
-            dia,
-            style: TextStyle(
-              color: tema().corTexto,
-              fontSize: sizeConstOf(context) * 30.0,
-            ),
+      child: Container(
+        decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(999),
+        boxShadow: [
+          BoxShadow(
+            color: tema().sombraLogo,
+            blurRadius: 60,
+            offset: Offset(0, 15)
           ),
         ],
+      ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Gap(sizeConstOf(context) * 20),
+            Text(
+              hora,
+              style: TextStyle(
+                color: tema().corTexto,
+                fontWeight: FontWeight.bold,
+                height: 0.9,
+                fontSize: sizeConstOf(context) * 90.0,
+              ),
+            ),
+            Text(
+              dia,
+              style: TextStyle(
+                color: tema().corTexto,
+                fontSize: sizeConstOf(context) * 30.0,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
