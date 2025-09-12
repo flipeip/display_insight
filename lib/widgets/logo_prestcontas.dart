@@ -1,8 +1,10 @@
-import '../tema.dart';
-import '../utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:jovial_svg/jovial_svg.dart';
+import 'package:shadow_widget/shadow_widget.dart';
+
+import '../tema.dart';
+import '../utils.dart';
 
 class LogoPrestcontas extends StatelessWidget {
   const LogoPrestcontas({super.key});
@@ -14,17 +16,10 @@ class LogoPrestcontas extends StatelessWidget {
         vertical: sizeConstOf(context) * 45,
         horizontal: sizeConstOf(context) * 60,
       ),
-      child: Container(
-        decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(999),
-        boxShadow: [
-          BoxShadow(
-            color: tema().sombraLogo,
-            blurRadius: 60,
-            offset: Offset(60, 0)
-          ),
-        ],
-      ),
+      child: ShadowWidget(
+        blurRadius: 8 * sizeConstOf(context),
+        offset: Offset(0, 5 * sizeConstOf(context)),
+        color: tema().sombra,
         child: SizedBox(
           height: sizeConstOf(context) * 85,
           child: ScalableImageWidget.fromSISource(

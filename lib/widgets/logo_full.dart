@@ -1,8 +1,9 @@
-import '../tema.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:jovial_svg/jovial_svg.dart';
+import 'package:shadow_widget/shadow_widget.dart';
 
+import '../tema.dart';
 import '../utils.dart';
 
 class LogoFull extends StatelessWidget {
@@ -13,26 +14,19 @@ class LogoFull extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(999),
-        boxShadow: [
-          BoxShadow(
-            color: tema().sombraLogo.withAlpha(50),
-            blurRadius: 120,
-            offset: Offset(0, 15)
+      child: ShadowWidget(
+        blurRadius: 15 * sizeConstOf(context),
+        offset: Offset(0, 10 * sizeConstOf(context)),
+        color: tema().sombra,
+        child: ScalableImageWidget.fromSISource(
+          currentColor: tema().corTexto,
+          si: ScalableImageSource.fromSI(
+            rootBundle,
+            tema().logo,
           ),
-        ],
-      ),
-      child: ScalableImageWidget.fromSISource(
-        currentColor: tema().corTexto,
-        si: ScalableImageSource.fromSI(
-          rootBundle,
-          tema().logo,
+          scale: sizeConstOf(context) * 4,
         ),
-        scale: sizeConstOf(context) * 4,
       ),
-    )
     );
   }
 }

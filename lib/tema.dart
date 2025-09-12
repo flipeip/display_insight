@@ -31,12 +31,8 @@ class Tema {
     );
   }
 
-  Color get sombraLogo => Color.fromARGB(
-    corFundo.a.ceil() + 70,
-    corFundo.r.ceil() + 60,
-    corFundo.g.ceil(),
-    corFundo.b.ceil()
-  );
+  Color get sombra => Color.fromARGB(corFundo.a.ceil() + 70,
+      corFundo.r.ceil() + 60, corFundo.g.ceil(), corFundo.b.ceil());
 }
 
 const temaOutubroRosa = Tema(

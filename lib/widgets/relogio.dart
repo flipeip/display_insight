@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:shadow_widget/shadow_widget.dart';
 
 import '../tema.dart';
 import '../utils.dart';
@@ -102,17 +103,10 @@ class _RelogioState extends State<Relogio> {
         horizontal: sizeConstOf(context) * 60.0,
         vertical: sizeConstOf(context) * 15,
       ),
-      child: Container(
-        decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(999),
-        boxShadow: [
-          BoxShadow(
-            color: tema().sombraLogo,
-            blurRadius: 60,
-            offset: Offset(0, 15)
-          ),
-        ],
-      ),
+      child: ShadowWidget(
+        blurRadius: 8 * sizeConstOf(context),
+        offset: Offset(0, 5 * sizeConstOf(context)),
+        color: tema().sombra,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,

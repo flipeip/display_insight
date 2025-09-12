@@ -1,10 +1,10 @@
-import 'widgets/logo_prestcontas.dart';
-import 'widgets/relogio.dart';
 import 'package:flutter/material.dart';
 import 'package:window_manager/window_manager.dart';
 
 import 'tema.dart';
 import 'widgets/logo_full.dart';
+import 'widgets/logo_prestcontas.dart';
+import 'widgets/relogio.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,11 +58,15 @@ class _MainAppState extends State<MainApp> {
             child: Stack(
               children: [
                 tema().fundo,
-                LogoFull(),
-                Relogio(),
-                Positioned(
-                  right: 0.0,
-                  child: LogoPrestcontas(),
+                Stack(
+                  children: [
+                    LogoFull(),
+                    Relogio(),
+                    Positioned(
+                      right: 0.0,
+                      child: LogoPrestcontas(),
+                    ),
+                  ],
                 ),
               ],
             ),
